@@ -21,8 +21,8 @@
       <nav>
         <a href="#analysis">Analysis</a>
         <a href="#radar">Radar</a>
+        <a href="#workbench">Workbench</a>
         <a href="#mvp">MVP</a>
-        <a href="#demo">Demo</a>
         <a href="#sources">Sources</a>
       </nav>
     </header>
@@ -37,21 +37,21 @@
             signal, runs specialist agents, and produces defensible recommendations a PM can actually ship.
           </p>
           <div class="hero-actions">
-            <a class="button primary" href="#demo">Explore workflows</a>
-            <a class="button ghost" href="#mvp">See build plan</a>
+            <a class="button primary" href="#workbench">Analyze feedback</a>
+            <a class="button ghost" href="#radar">Explore trends</a>
           </div>
           <dl class="hero-metrics">
             <div>
-              <dt>70+</dt>
-              <dd>reference workflows mapped</dd>
+              <dt>6</dt>
+              <dd>market signals ranked</dd>
             </div>
             <div>
-              <dt>5</dt>
-              <dd>MVP modules recommended</dd>
+              <dt>1</dt>
+              <dd>live PM workbench</dd>
             </div>
             <div>
-              <dt>0</dt>
-              <dd>generic prompt wrappers</dd>
+              <dt>4</dt>
+              <dd>artifact types generated</dd>
             </div>
           </dl>
         </div>
@@ -117,6 +117,24 @@
             <div class="trend-grid" id="trend-grid" aria-live="polite"></div>
           </div>
           <aside class="trend-detail" id="trend-detail" aria-live="polite"></aside>
+        </div>
+      </section>
+
+      <section class="section workbench" id="workbench" aria-labelledby="workbench-title">
+        <div class="section-heading">
+          <p class="eyebrow">Try the value loop</p>
+          <h2 id="workbench-title">Paste messy feedback. Get a PM-ready opportunity brief.</h2>
+        </div>
+        <div class="workbench-shell">
+          <div class="input-panel">
+            <label for="feedback-input">Customer signal</label>
+            <textarea id="feedback-input" spellcheck="true"></textarea>
+            <div class="input-actions">
+              <button class="button primary" type="button" id="analyze-feedback">Analyze signal</button>
+              <button class="button ghost" type="button" id="load-sample">Load sample</button>
+            </div>
+          </div>
+          <div class="output-panel" id="feedback-output" aria-live="polite"></div>
         </div>
       </section>
 

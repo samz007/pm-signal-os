@@ -175,16 +175,76 @@ const trends = [
   },
 ];
 
+const sampleFeedback = `Support: Enterprise admins keep asking why AI summaries cannot show the exact source tickets behind each recommendation.
+Sales: Two prospects said they like the roadmap assistant, but legal needs audit logs before they can approve an AI workflow.
+Customer call: Our PM team spends Fridays copying notes from Gong, Intercom, and Slack into a spreadsheet before planning.
+NPS comment: The tool is useful, but I do not trust the priority score unless I can see which customers asked for the thing.
+Win/loss note: We lost to a competitor because they had Salesforce sync and a cleaner executive weekly digest.
+Research interview: I want the system to tell me which feedback is new this week versus the same old complaints.
+CS note: Expansion account asked for an AI ROI dashboard tied to support deflection and onboarding time saved.
+Product ops: We need a repeatable way to convert messy customer signal into a roadmap memo before Monday planning.`;
+
+const themeDefinitions = [
+  {
+    id: "trust",
+    label: "Trust and evidence",
+    keywords: ["trust", "source", "evidence", "audit", "legal", "approve", "logs", "exact"],
+    bet: "Make every AI recommendation traceable to source evidence.",
+    experiment: "Add source-linked recommendations for one feedback channel and measure stakeholder acceptance.",
+  },
+  {
+    id: "integration",
+    label: "Workflow integrations",
+    keywords: ["salesforce", "gong", "intercom", "slack", "sync", "spreadsheet", "copying", "channel"],
+    bet: "Start with one high-friction integration bundle instead of a broad connector marketplace.",
+    experiment: "Ship CSV plus one source import and measure setup completion and weekly reuse.",
+  },
+  {
+    id: "executive",
+    label: "Executive communication",
+    keywords: ["executive", "weekly", "digest", "memo", "planning", "roadmap", "monday"],
+    bet: "Package insights into a recurring planning memo, not just a dashboard.",
+    experiment: "Generate a Monday roadmap memo for five PMs and collect usefulness ratings.",
+  },
+  {
+    id: "roi",
+    label: "AI ROI measurement",
+    keywords: ["roi", "support", "deflection", "onboarding", "time saved", "dashboard", "expansion"],
+    bet: "Attach AI workflows to concrete business metrics.",
+    experiment: "Create an ROI worksheet for support deflection and onboarding time-to-value.",
+  },
+  {
+    id: "novelty",
+    label: "Freshness and prioritization",
+    keywords: ["new", "priority", "prioritize", "score", "competitor", "lost", "asked", "complaints"],
+    bet: "Separate recurring noise from fresh signal before prioritizing.",
+    experiment: "Tag feedback as new, repeated, or strategic and compare roadmap meeting quality.",
+  },
+];
+
 const grid = document.querySelector("#workflow-grid");
 const panel = document.querySelector("#detail-panel");
 const filters = document.querySelectorAll("[data-filter]");
 const trendGrid = document.querySelector("#trend-grid");
 const trendPanel = document.querySelector("#trend-detail");
 const trendFilters = document.querySelectorAll("[data-trend-filter]");
+const feedbackInput = document.querySelector("#feedback-input");
+const feedbackOutput = document.querySelector("#feedback-output");
+const analyzeFeedbackButton = document.querySelector("#analyze-feedback");
+const loadSampleButton = document.querySelector("#load-sample");
 let selectedId = "voc";
 let activeFilter = "all";
 let selectedTrendId = "agentic-pm";
 let activeTrendFilter = "all";
+
+function escapeHtml(value) {
+  return value
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
 
 function labelFor(status) {
   if (status === "hot") return "Trending";
@@ -310,6 +370,95 @@ function renderTrendPanel() {
   `;
 }
 
+function splitFeedback(raw) {
+  return raw
+    .split(/\n+/)
+    .map((line) => line.trim())
+    .filter(Boolean);
+}
+
+function scoreThemes(lines) {
+  const normalizedLines = lines.map((line) => line.toLowerCase());
+  return themeDefinitions
+    .map((theme) => {
+      const matches = normalizedLines
+        .map((line, index) => {
+          const hits = theme.keywords.filter((keyword) => line.includes(keyword)).length;
+          return hits ? { line: lines[index], hits } : null;
+        })
+        .filter(Boolean);
+      const score = matches.reduce((total, match) => total + match.hits, 0) + matches.length * 2;
+      return { ...theme, matches, score };
+    })
+    .filter((theme) => theme.score > 0)
+    .sort((a, b) => b.score - a.score);
+}
+
+function renderEmptyWorkbench() {
+  if (!feedbackOutput) return;
+  feedbackOutput.innerHTML = `
+    <span class="tag">PM readout</span>
+    <h3>Turn raw signal into a decision artifact.</h3>
+    <p>Use the sample or paste customer notes, support snippets, sales objections, interview quotes, app reviews, or roadmap requests.</p>
+    <ul class="brief-list">
+      <li><strong>Best for</strong><span class="evidence">Finding themes, proving demand, and deciding the next product bet.</span></li>
+      <li><strong>What it returns</strong><span class="evidence">Opportunity themes, evidence snippets, a recommended bet, and a small experiment.</span></li>
+    </ul>
+  `;
+}
+
+function analyzeFeedback() {
+  if (!feedbackInput || !feedbackOutput) return;
+  const lines = splitFeedback(feedbackInput.value);
+  if (!lines.length) {
+    renderEmptyWorkbench();
+    return;
+  }
+
+  const themes = scoreThemes(lines);
+  const topTheme = themes[0] || {
+    label: "Unclassified signal",
+    bet: "Collect more specific evidence before committing roadmap capacity.",
+    experiment: "Run five follow-up interviews to clarify the underlying job and urgency.",
+    matches: [],
+  };
+  const evidenceCount = themes.reduce((total, theme) => total + theme.matches.length, 0);
+  const confidence = Math.min(95, 45 + evidenceCount * 6 + themes.length * 5);
+  const strongestQuote = topTheme.matches[0]?.line || lines[0];
+
+  feedbackOutput.innerHTML = `
+    <span class="tag">PM readout</span>
+    <div class="output-kpis">
+      <div class="summary-tile"><strong>${lines.length}</strong><span>signal items</span></div>
+      <div class="summary-tile"><strong>${themes.length}</strong><span>themes found</span></div>
+      <div class="summary-tile"><strong>${confidence}%</strong><span>directional confidence</span></div>
+    </div>
+    <h3>Top opportunity themes</h3>
+    <ul class="theme-list">
+      ${
+        themes
+          .slice(0, 4)
+          .map(
+            (theme) => `
+              <li>
+                <strong>${escapeHtml(theme.label)} · ${theme.matches.length} evidence items</strong>
+                <span class="evidence">${escapeHtml(theme.matches[0]?.line || "No representative quote available.")}</span>
+              </li>
+            `,
+          )
+          .join("") || `<li><strong>No strong theme yet</strong><span class="evidence">Add more specific customer language or load the sample.</span></li>`
+      }
+    </ul>
+    <h3>Recommended product bet</h3>
+    <ul class="brief-list">
+      <li><strong>Bet</strong><span class="evidence">${escapeHtml(topTheme.bet)}</span></li>
+      <li><strong>Why now</strong><span class="evidence">The strongest signal is “${escapeHtml(strongestQuote)}” and it connects to ${escapeHtml(topTheme.label.toLowerCase())}.</span></li>
+      <li><strong>Next experiment</strong><span class="evidence">${escapeHtml(topTheme.experiment)}</span></li>
+      <li><strong>Decision rule</strong><span class="evidence">Promote to roadmap only if at least three distinct customer/account sources repeat this pain and one measurable business metric is identified.</span></li>
+    </ul>
+  `;
+}
+
 filters.forEach((button) => {
   button.addEventListener("click", () => {
     activeFilter = button.dataset.filter;
@@ -332,3 +481,15 @@ renderGrid();
 renderPanel();
 renderTrendGrid();
 renderTrendPanel();
+
+if (feedbackInput) {
+  feedbackInput.value = sampleFeedback;
+  analyzeFeedback();
+}
+
+analyzeFeedbackButton?.addEventListener("click", analyzeFeedback);
+loadSampleButton?.addEventListener("click", () => {
+  if (!feedbackInput) return;
+  feedbackInput.value = sampleFeedback;
+  analyzeFeedback();
+});

@@ -137,6 +137,7 @@ h3 {
 .insight-card p,
 .trend-card p,
 .trend-detail p,
+.output-panel p,
 .detail-panel p,
 .build-steps span {
   color: var(--muted);
@@ -251,6 +252,9 @@ h3 {
 .roadmap-grid div,
 .trend-card,
 .trend-detail,
+.input-panel,
+.output-panel,
+.summary-tile,
 .detail-panel,
 .workflow-card {
   border: 1px solid var(--line);
@@ -370,6 +374,108 @@ h3 {
 .trend-detail a {
   color: #fff;
   font-weight: 760;
+}
+
+.workbench {
+  background: #edf3f1;
+}
+
+.workbench-shell {
+  display: grid;
+  grid-template-columns: minmax(320px, 0.9fr) minmax(0, 1.1fr);
+  gap: 18px;
+  align-items: start;
+}
+
+.input-panel,
+.output-panel {
+  padding: 22px;
+}
+
+.input-panel label {
+  display: block;
+  margin-bottom: 12px;
+  font-weight: 780;
+}
+
+.input-panel textarea {
+  width: 100%;
+  min-height: 420px;
+  resize: vertical;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--ink);
+  background: #fbfbf8;
+  font: inherit;
+  line-height: 1.45;
+}
+
+.input-panel textarea:focus {
+  border-color: var(--teal);
+  outline: 3px solid rgba(22, 124, 128, 0.16);
+}
+
+.input-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.output-panel {
+  min-height: 520px;
+}
+
+.output-kpis {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.summary-tile {
+  padding: 14px;
+}
+
+.summary-tile strong {
+  display: block;
+  font-size: 1.55rem;
+  line-height: 1;
+}
+
+.summary-tile span {
+  display: block;
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.theme-list,
+.brief-list {
+  display: grid;
+  gap: 10px;
+  padding: 0;
+  margin: 0 0 18px;
+  list-style: none;
+}
+
+.theme-list li,
+.brief-list li {
+  padding: 14px;
+  border-radius: 8px;
+  background: #f4f7f5;
+}
+
+.theme-list strong,
+.brief-list strong {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.evidence {
+  color: var(--muted);
+  font-size: 0.9rem;
 }
 
 .mvp {
@@ -544,6 +650,7 @@ h3 {
   .hero,
   .section-heading,
   .mvp-layout,
+  .workbench-shell,
   .demo-shell {
     grid-template-columns: 1fr;
   }
@@ -587,6 +694,7 @@ h3 {
   }
 
   .hero-metrics,
+  .output-kpis,
   .analysis-grid,
   .trend-grid,
   .roadmap-grid,
