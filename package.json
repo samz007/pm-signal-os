@@ -1,0 +1,17 @@
+{
+  "name": "pm-signal-os",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Portfolio demo for an AI product management operating system.",
+  "scripts": {
+    "dev": "npx serve .",
+    "build": "echo \"Static site ready\""
+  },
+  "keywords": [
+    "product-management",
+    "portfolio",
+    "ai"
+  ],
+  "author": "",
+  "license": "UNLICENSED"
+}
