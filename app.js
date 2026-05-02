@@ -1,57 +1,57 @@
 const workflows = [
   {
     id: "voc",
-    title: "Voice of Customer Analysis",
+    title: "AI Voice of Customer Decision Engine",
     status: ["hot", "mvp"],
     time: "3 hrs -> 30 min",
-    summary: "Aggregate 100+ feedback items into themes, jobs, objections, and ranked opportunities.",
-    why: "This is the strongest first build because it creates evidence every downstream workflow can reuse.",
-    outputs: ["Theme map with source snippets", "Opportunity scorecard", "Product brief with assumptions"],
+    summary: "Aggregate feedback into traceable themes, ranked opportunities, eval checks, and decision-ready product bets.",
+    why: "This is the strongest first build because it touches the full AI product loop: ingestion, context, synthesis, evidence, scoring, trust, and impact.",
+    outputs: ["Evidence-linked theme map", "Opportunity scorecard with confidence", "Eval criteria and product brief"],
   },
   {
     id: "interviews",
-    title: "Batch Interview Synthesis",
+    title: "Research Synthesis Agent Team",
     status: ["hot", "mvp"],
     time: "7-10 hrs -> 15 min",
-    summary: "Analyze multiple research transcripts in parallel and extract patterns with evidence trails.",
-    why: "It proves agentic workflow design and gives the portfolio a research-heavy PM signal.",
-    outputs: ["Top jobs-to-be-done", "Quote-backed insight clusters", "Recommended discovery questions"],
+    summary: "Analyze transcripts with specialist agents for jobs, pain, objections, risk, and missing evidence.",
+    why: "It proves you understand multi-agent workflow design without pretending autonomy is magic.",
+    outputs: ["Top jobs-to-be-done", "Quote-backed insight clusters", "Open questions and eval failures"],
   },
   {
     id: "problem-prd",
-    title: "Problem to PRD",
+    title: "Problem to AI Product Spec",
     status: ["hot", "mvp"],
     time: "3 hrs -> 20 min",
-    summary: "Turn a validated problem into opportunity framing, PRD, risk review, and sprint-ready stories.",
-    why: "PRDs are still useful when they are generated from evidence rather than from a blank prompt.",
-    outputs: ["Problem framing", "MVP scope and non-goals", "Acceptance criteria and risks"],
+    summary: "Turn a validated problem into AI behavior, data needs, UX states, evals, risks, and sprint-ready scope.",
+    why: "AI specs need more than requirements. They need behavior boundaries, context contracts, failure modes, and measurement.",
+    outputs: ["Problem framing", "AI behavior contract", "Acceptance criteria, evals, and risks"],
   },
   {
     id: "hypothesis",
-    title: "Metrics Drop Hypothesis Tester",
+    title: "AI Impact Hypothesis Tester",
     status: ["hot"],
     time: "2 hrs -> 15 min",
-    summary: "Debug a metric drop by generating competing hypotheses, evidence needs, and next actions.",
-    why: "Modern PM portfolios should show data reasoning, not just communication artifacts.",
-    outputs: ["Hypothesis tree", "Evidence request list", "Ship, pause, or investigate recommendation"],
+    summary: "Connect AI usage to outcome metrics and generate competing explanations when impact is unclear.",
+    why: "Modern AI PM portfolios should show measurement judgment, not just shiny model demos.",
+    outputs: ["Hypothesis tree", "Evidence request list", "Ship, pause, tune, or rollback recommendation"],
   },
   {
     id: "competitive",
-    title: "Competitive Intel Pack",
+    title: "AI Competitive Intel Pack",
     status: ["hot"],
     time: "4 hrs -> 30 min",
-    summary: "Compare competitors across positioning, pricing, gaps, and strategic threats.",
-    why: "Useful for portfolios when the analysis ends with a product choice instead of a feature checklist.",
-    outputs: ["Positioning map", "Feature and pricing deltas", "Strategic recommendation"],
+    summary: "Compare competitors across AI workflows, data moat, trust controls, pricing, and product differentiation.",
+    why: "Useful when the analysis ends with a product choice instead of a feature checklist.",
+    outputs: ["AI positioning map", "Trust and feature deltas", "Strategic recommendation"],
   },
   {
     id: "review",
-    title: "Multi-Perspective Review",
+    title: "AI Launch Readiness Review",
     status: ["hot", "mvp"],
     time: "2 hrs -> 15 min",
-    summary: "Run customer, engineering, executive, sales, legal, and contrarian reviews on a proposal.",
-    why: "This is a crisp way to show stakeholder judgment and pre-mortem thinking.",
-    outputs: ["Consensus and tensions", "Blockers by function", "Questions to resolve before shipping"],
+    summary: "Run customer, engineering, legal, sales, security, executive, and contrarian reviews before launch.",
+    why: "This shows stakeholder judgment, AI risk literacy, and pre-mortem thinking.",
+    outputs: ["Consensus and tensions", "Launch blockers by function", "Questions to resolve before shipping"],
   },
   {
     id: "prd",
@@ -59,7 +59,7 @@ const workflows = [
     status: ["stale"],
     time: "4-6 hrs -> 45 min",
     summary: "Create a structured PRD from a messy idea.",
-    why: "Useful as a feature, weak as a product. It feels like a prompt wrapper unless grounded in user signal.",
+    why: "Useful as a minor feature, weak as the product. It feels like a prompt wrapper unless grounded in evidence, context, and evals.",
     outputs: ["PRD document", "Goals and requirements", "Basic success metrics"],
   },
   {
@@ -68,7 +68,7 @@ const workflows = [
     status: ["stale"],
     time: "2-3 hrs -> 10 min",
     summary: "Generate classic strategy frameworks for a product or portfolio.",
-    why: "These frameworks can look outdated when they do not expose assumptions or connect to live data.",
+    why: "These frameworks look outdated when they do not expose assumptions, uncertainty, source evidence, or decision impact.",
     outputs: ["Framework grid", "Strategic implications", "Follow-up questions"],
   },
   {
@@ -77,7 +77,7 @@ const workflows = [
     status: ["stale"],
     time: "20-30 min -> 5 min",
     summary: "Create agendas, decisions, and action items from meetings.",
-    why: "This is table stakes productivity tooling. Keep it as a supporting utility, not the flagship.",
+    why: "This is table stakes AI productivity. Keep it as a supporting utility, not the flagship AI PM proof point.",
     outputs: ["Agenda", "Decision log", "Action items"],
   },
 ];
@@ -189,36 +189,36 @@ const themeDefinitions = [
     id: "trust",
     label: "Trust and evidence",
     keywords: ["trust", "source", "evidence", "audit", "legal", "approve", "logs", "exact"],
-    bet: "Make every AI recommendation traceable to source evidence.",
-    experiment: "Add source-linked recommendations for one feedback channel and measure stakeholder acceptance.",
+    bet: "Make every AI recommendation traceable to source evidence and confidence.",
+    experiment: "Add source-linked recommendations for one feedback channel, then evaluate citation accuracy and stakeholder acceptance.",
   },
   {
     id: "integration",
     label: "Workflow integrations",
     keywords: ["salesforce", "gong", "intercom", "slack", "sync", "spreadsheet", "copying", "channel"],
-    bet: "Start with one high-friction integration bundle instead of a broad connector marketplace.",
-    experiment: "Ship CSV plus one source import and measure setup completion and weekly reuse.",
+    bet: "Start with one high-friction context bundle instead of a broad connector marketplace.",
+    experiment: "Ship CSV plus one source import, then measure context completeness, setup completion, and weekly reuse.",
   },
   {
     id: "executive",
     label: "Executive communication",
     keywords: ["executive", "weekly", "digest", "memo", "planning", "roadmap", "monday"],
-    bet: "Package insights into a recurring planning memo, not just a dashboard.",
-    experiment: "Generate a Monday roadmap memo for five PMs and collect usefulness ratings.",
+    bet: "Package insights into a recurring planning memo with assumptions, evidence, and decision options.",
+    experiment: "Generate a Monday roadmap memo for five PMs and collect usefulness, trust, and edit-distance ratings.",
   },
   {
     id: "roi",
     label: "AI ROI measurement",
     keywords: ["roi", "support", "deflection", "onboarding", "time saved", "dashboard", "expansion"],
-    bet: "Attach AI workflows to concrete business metrics.",
-    experiment: "Create an ROI worksheet for support deflection and onboarding time-to-value.",
+    bet: "Attach AI workflows to concrete business metrics and guardrails.",
+    experiment: "Create an ROI worksheet for support deflection, onboarding time-to-value, quality, latency, and cost.",
   },
   {
     id: "novelty",
     label: "Freshness and prioritization",
     keywords: ["new", "priority", "prioritize", "score", "competitor", "lost", "asked", "complaints"],
     bet: "Separate recurring noise from fresh signal before prioritizing.",
-    experiment: "Tag feedback as new, repeated, or strategic and compare roadmap meeting quality.",
+    experiment: "Tag feedback as new, repeated, or strategic and evaluate whether roadmap meetings reach decisions faster.",
   },
 ];
 
@@ -397,12 +397,12 @@ function scoreThemes(lines) {
 function renderEmptyWorkbench() {
   if (!feedbackOutput) return;
   feedbackOutput.innerHTML = `
-    <span class="tag">PM readout</span>
-    <h3>Turn raw signal into a decision artifact.</h3>
+    <span class="tag">AI PM readout</span>
+    <h3>Turn raw signal into an AI product decision artifact.</h3>
     <p>Use the sample or paste customer notes, support snippets, sales objections, interview quotes, app reviews, or roadmap requests.</p>
     <ul class="brief-list">
       <li><strong>Best for</strong><span class="evidence">Finding themes, proving demand, and deciding the next product bet.</span></li>
-      <li><strong>What it returns</strong><span class="evidence">Opportunity themes, evidence snippets, a recommended bet, and a small experiment.</span></li>
+      <li><strong>What it returns</strong><span class="evidence">Opportunity themes, evidence snippets, a recommended bet, eval ideas, and a small experiment.</span></li>
     </ul>
   `;
 }
@@ -427,7 +427,7 @@ function analyzeFeedback() {
   const strongestQuote = topTheme.matches[0]?.line || lines[0];
 
   feedbackOutput.innerHTML = `
-    <span class="tag">PM readout</span>
+    <span class="tag">AI PM readout</span>
     <div class="output-kpis">
       <div class="summary-tile"><strong>${lines.length}</strong><span>signal items</span></div>
       <div class="summary-tile"><strong>${themes.length}</strong><span>themes found</span></div>
@@ -451,10 +451,11 @@ function analyzeFeedback() {
     </ul>
     <h3>Recommended product bet</h3>
     <ul class="brief-list">
-      <li><strong>Bet</strong><span class="evidence">${escapeHtml(topTheme.bet)}</span></li>
+      <li><strong>AI product bet</strong><span class="evidence">${escapeHtml(topTheme.bet)}</span></li>
       <li><strong>Why now</strong><span class="evidence">The strongest signal is “${escapeHtml(strongestQuote)}” and it connects to ${escapeHtml(topTheme.label.toLowerCase())}.</span></li>
       <li><strong>Next experiment</strong><span class="evidence">${escapeHtml(topTheme.experiment)}</span></li>
-      <li><strong>Decision rule</strong><span class="evidence">Promote to roadmap only if at least three distinct customer/account sources repeat this pain and one measurable business metric is identified.</span></li>
+      <li><strong>Eval to add</strong><span class="evidence">Check evidence citation accuracy, unsupported recommendation rate, duplicate clustering quality, and whether PMs edit the output before sharing.</span></li>
+      <li><strong>Decision rule</strong><span class="evidence">Promote to roadmap only if at least three distinct customer/account sources repeat this pain and one measurable business metric plus one quality guardrail are identified.</span></li>
     </ul>
   `;
 }
