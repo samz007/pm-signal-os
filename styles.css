@@ -135,6 +135,8 @@ h3 {
 .recommendation p,
 .roadmap-grid p,
 .insight-card p,
+.trend-card p,
+.trend-detail p,
 .detail-panel p,
 .build-steps span {
   color: var(--muted);
@@ -237,6 +239,7 @@ h3 {
 }
 
 .analysis-grid,
+.trend-grid,
 .roadmap-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -246,6 +249,8 @@ h3 {
 .insight-card,
 .recommendation,
 .roadmap-grid div,
+.trend-card,
+.trend-detail,
 .detail-panel,
 .workflow-card {
   border: 1px solid var(--line);
@@ -264,6 +269,107 @@ h3 {
 
 .insight-card.warning {
   border-top: 5px solid var(--amber);
+}
+
+.radar {
+  background: #fbfbf8;
+}
+
+.radar-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(300px, 0.7fr);
+  gap: 18px;
+  align-items: start;
+}
+
+.radar-board {
+  display: grid;
+  gap: 14px;
+}
+
+.trend-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.trend-card {
+  min-height: 234px;
+  padding: 20px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.trend-card.active {
+  outline: 3px solid rgba(47, 104, 197, 0.18);
+  border-color: var(--blue);
+}
+
+.trend-card header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.trend-card .score {
+  display: grid;
+  min-width: 54px;
+  height: 54px;
+  place-items: center;
+  border-radius: 8px;
+  background: var(--ink);
+  color: #fff;
+  font-size: 1.25rem;
+  font-weight: 820;
+}
+
+.trend-card h3 {
+  margin-bottom: 6px;
+}
+
+.trend-card .source {
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.trend-detail {
+  position: sticky;
+  top: 86px;
+  padding: 24px;
+  background: var(--ink);
+  color: #fff;
+}
+
+.trend-detail p {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.trend-detail dl {
+  display: grid;
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.trend-detail div {
+  padding: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+}
+
+.trend-detail dt {
+  color: rgba(255, 255, 255, 0.58);
+  font-size: 0.78rem;
+  font-weight: 760;
+  text-transform: uppercase;
+}
+
+.trend-detail dd {
+  margin: 4px 0 0;
+}
+
+.trend-detail a {
+  color: #fff;
+  font-weight: 760;
 }
 
 .mvp {
@@ -443,12 +549,19 @@ h3 {
   }
 
   .analysis-grid,
+  .trend-grid,
   .roadmap-grid,
   .build-steps {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .radar-layout,
   .detail-panel {
+    grid-template-columns: 1fr;
+    position: static;
+  }
+
+  .trend-detail {
     position: static;
   }
 }
@@ -475,6 +588,7 @@ h3 {
 
   .hero-metrics,
   .analysis-grid,
+  .trend-grid,
   .roadmap-grid,
   .build-steps,
   .workflow-grid {

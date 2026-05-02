@@ -20,6 +20,7 @@
       </a>
       <nav>
         <a href="#analysis">Analysis</a>
+        <a href="#radar">Radar</a>
         <a href="#mvp">MVP</a>
         <a href="#demo">Demo</a>
         <a href="#sources">Sources</a>
@@ -100,6 +101,25 @@
         </div>
       </section>
 
+      <section class="section radar" id="radar" aria-labelledby="radar-title">
+        <div class="section-heading">
+          <p class="eyebrow">Audience value layer</p>
+          <h2 id="radar-title">Serve PMs a weekly radar of what is changing and what to try next.</h2>
+        </div>
+        <div class="radar-layout">
+          <div class="radar-board">
+            <div class="filters" role="tablist" aria-label="Trend filters">
+              <button class="filter active" type="button" data-trend-filter="all">All signals</button>
+              <button class="filter" type="button" data-trend-filter="ai">AI PM</button>
+              <button class="filter" type="button" data-trend-filter="ops">Product ops</button>
+              <button class="filter" type="button" data-trend-filter="career">PM career</button>
+            </div>
+            <div class="trend-grid" id="trend-grid" aria-live="polite"></div>
+          </div>
+          <aside class="trend-detail" id="trend-detail" aria-live="polite"></aside>
+        </div>
+      </section>
+
       <section class="section mvp" id="mvp" aria-labelledby="mvp-title">
         <div class="section-heading compact">
           <p class="eyebrow">Recommended starting point</p>
@@ -163,39 +183,39 @@
       <section class="section roadmap" aria-labelledby="roadmap-title">
         <div class="section-heading compact">
           <p class="eyebrow">Build shape</p>
-          <h2 id="roadmap-title">A clean first release can be static plus simulated intelligence.</h2>
+          <h2 id="roadmap-title">Turn the radar into a repeatable content and product loop.</h2>
           <p>
-            The first portfolio version should demonstrate the workflow, data model, scoring logic, and decision UX. Real integrations
-            can come next through GitHub issues, Vercel deployment, and a lightweight API route.
+            The platform should keep scanning public PM signals, translate them into use cases, and package the best ones as
+            playbooks, templates, and lightweight tools.
           </p>
         </div>
         <div class="roadmap-grid">
           <div>
             <span>01</span>
-            <h3>Demo data</h3>
-            <p>Seed believable customer feedback and competitor snippets.</p>
+            <h3>Trend intake</h3>
+            <p>Track analyst notes, PM communities, tool launches, job descriptions, and founder essays.</p>
           </div>
           <div>
             <span>02</span>
-            <h3>Scoring model</h3>
-            <p>Make the prioritization transparent enough to argue with.</p>
+            <h3>Use-case scoring</h3>
+            <p>Rank ideas by audience pain, novelty, monetization, evidence strength, and shipping effort.</p>
           </div>
           <div>
             <span>03</span>
-            <h3>Decision export</h3>
-            <p>Produce one-page briefs that link claims back to evidence.</p>
+            <h3>Weekly brief</h3>
+            <p>Publish a short brief with one trend, one PM workflow, and one practical artifact.</p>
           </div>
           <div>
             <span>04</span>
-            <h3>Deployment</h3>
-            <p>Publish as a portfolio case study and iterate with live data later.</p>
+            <h3>Tool conversion</h3>
+            <p>Promote recurring briefs into calculators, checklists, benchmarks, or agent workflows.</p>
           </div>
         </div>
       </section>
     </main>
 
     <footer class="footer" id="sources">
-      <p>Sources used: <a href="https://mysecond.ai/skills">mySecond skills catalog</a>, <a href="https://www.mysecond.ai/skills/ai-product-strategy">mySecond AI Product Strategy</a>, <a href="https://www.institutepm.com/knowledge-hub/ai-product-management-2026">Institute of AI PM 2026 trends</a>, and <a href="https://www.forrester.com/report/product-management-in-2026-genai-use-across-the-product-development-process/RES193231">Forrester PM genAI snapshot</a>.</p>
+      <p>Sources used: <a href="https://mysecond.ai/skills">mySecond skills catalog</a>, <a href="https://www.mysecond.ai/skills/ai-product-strategy">mySecond AI Product Strategy</a>, <a href="https://www.institutepm.com/knowledge-hub/ai-product-management-2026">Institute of AI PM 2026 trends</a>, <a href="https://www.forrester.com/report/product-management-in-2026-genai-use-across-the-product-development-process/RES193231">Forrester PM genAI snapshot</a>, <a href="https://www.forrester.com/report/product-management-in-2026-genai-features-are-now-standard-in-product/RES193229">Forrester genAI product portfolio snapshot</a>, and <a href="https://www.gartner.com/en/newsroom/press-releases/2025-08-26-gartner-predicts-40-percent-of-enterprise-apps-will-feature-task-specific-ai-agents-by-2026-up-from-less-than-5-percent-in-2025">Gartner AI agents forecast</a>.</p>
       <p>Built as a product-management portfolio demo.</p>
     </footer>
 
