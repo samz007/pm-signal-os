@@ -5,7 +5,8 @@
   "description": "Portfolio demo for an AI product management operating system.",
   "scripts": {
     "dev": "npx serve .",
-    "build": "echo \"Static site ready\""
+    "build": "echo \"Static site ready\"",
+    "vercel-build": "npm run build"
   },
   "keywords": [
     "product-management",

@@ -222,6 +222,32 @@ h3 {
   box-shadow: var(--shadow);
 }
 
+.capability-strip {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  padding: 0 clamp(18px, 4vw, 56px) 18px;
+  background: var(--paper);
+}
+
+.capability-strip div {
+  min-height: 142px;
+  padding: 20px;
+  border: 1px solid var(--line);
+  background: #fff;
+}
+
+.capability-strip strong {
+  display: block;
+  margin-bottom: 12px;
+  font-size: 1.02rem;
+}
+
+.capability-strip span {
+  color: var(--muted);
+  font-size: 0.93rem;
+}
+
 .section {
   padding: 76px clamp(18px, 4vw, 56px);
 }
@@ -691,6 +717,7 @@ h3 {
 
   .analysis-grid,
   .system-grid,
+  .capability-strip,
   .trend-grid,
   .roadmap-grid,
   .build-steps {
@@ -729,6 +756,7 @@ h3 {
   }
 
   .hero-metrics,
+  .capability-strip,
   .output-kpis,
   .analysis-grid,
   .system-grid,
